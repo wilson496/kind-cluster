@@ -1,9 +1,3 @@
-# variable "argocd_hostname" {
-#   type        = string
-#   description = "Hostname to expose ArgoCD Ingress"
-# }
-
-
 variable "namespace" {
   type    = string
   default = "argocd"

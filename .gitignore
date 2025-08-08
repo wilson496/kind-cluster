@@ -1,4 +1,30 @@
-/terraform/modules/nginx_ingress/.terraform
+# Terraform
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/.terraform/
 terraform/.terraform.lock.hcl
-terraform/.terraform/modules/modules.json
-terraform/.terraform/modules/modules.json
+terraform/crash.log
+terraform/modules/*/.terraform.lock.hcl
+terraform/modules/*/.terraform/
+
+terraform/modules/argocd/.terraform.lock.hcl
+terraform/modules/argocd/.terraform
+
+# Local development
+kind-config.yaml
+cluster/cluster.yaml
+
+# Editor junk
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# Logs
+*.log
+
+# Python virtual env
+.venv/
+__pycache__/
+

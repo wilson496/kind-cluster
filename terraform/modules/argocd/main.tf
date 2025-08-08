@@ -1,35 +1,3 @@
-# resource "helm_release" "argocd" {
-#   name       = "argocd"
-#   repository = "https://argoproj.github.io/argo-helm"
-#   chart      = "argo-cd"
-#   namespace  = "argocd"
-#   create_namespace = true
-#   version    = "5.46.7"
-
-#   # values = [file("${path.module}/argocd-values.yaml")]
-#   values = [<<-EOT
-
-#   configs:
-#     params:
-#       server.insecure: "true"
-
-#   server:
-#     ingress:
-#       enabled: true
-#       ingressClassName: nginx
-#       hosts:
-#         - argocd.localhost
-#       paths:
-#         - /
-#       tls: []
-# EOT
-# ]
-#   wait          = true
-#   cleanup_on_fail = true
-
-
-# }
-
 resource "helm_release" "argocd" {
   name             = "argocd"
   namespace        = var.namespace

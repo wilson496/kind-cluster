@@ -2,31 +2,42 @@ name: Terraform CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
 
 jobs:
   terraform:
     name: Terraform Checks
     runs-on: ubuntu-latest
+    env:
+      TF_DIR: ./terraform
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v3
-      with:
-        terraform_version: 1.9.5
+      - name: Verify Terraform directory exists
+        run: |
+          if [ ! -d "$TF_DIR" ]; then
+            echo "ERROR: $TF_DIR not found. Listing repo root:"
+            ls -la
+            exit 1
+          fi
+          echo "Found $TF_DIR"
+      
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.5
 
-    - name: Terraform Format
-      run: terraform fmt -check -recursive
+      - name: Terraform fmt (repo wide)
+        run: terraform fmt -check -recursive
 
-    - name: Terraform Init
-      run: terraform init
-      working-directory: terraform
+      - name: Terraform Init (no backend)
+        working-directory: ${{ env.TF_DIR }}
+        run: terraform init -backend=false
 
-    - name: Terraform Validate
-      run: terraform validate
-      working-directory: terraform
+      - name: Terraform Validate
+        working-directory: ${{ env.TF_DIR }}
+        run: terraform validate -no-color
