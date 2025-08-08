@@ -1,0 +1,14 @@
+server:
+  ingress:
+    enabled: false
+    ingressClassName: nginx
+    hostname: argocd.localhost
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    extraHosts:
+      - name: argocd.localhost
+        path: /
+
+configs:
+  params:
+    server.insecure: "true"
