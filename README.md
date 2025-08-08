@@ -1,7 +1,7 @@
 # Kind Kubernetes Project with Terraform, NGINX Ingress, and ArgoCD
 
 ## Overview
-This repository provisions a local Kubernetes cluster using [Kind](https://kind.sigs.k8s.io/) and manages deployments via [Terraform](https://www.terraform.io/).  
+This repository provisions a local Kubernetes cluster using [Kind](https://kind.sigs.k8s.io/) and manages deployments via [Terraform](https://www.terraform.io/).
 It includes:
 - **NGINX Ingress Controller** (for HTTP routing)
 - **ArgoCD** (for GitOps-based application deployments)
@@ -42,7 +42,7 @@ This will:
 - Output ArgoCD URL
 
 ### 2. Access ArgoCD
-The default configuration exposes ArgoCD via `http://argocd.localhost`.  
+The default configuration exposes ArgoCD via `http://argocd.localhost`.
 Login with:
 ```bash
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d

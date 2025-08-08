@@ -1,0 +1,4 @@
+/terraform/modules/nginx_ingress/.terraform
+terraform/.terraform.lock.hcl
+terraform/.terraform/modules/modules.json
+terraform/.terraform/modules/modules.json

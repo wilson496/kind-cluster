@@ -1,0 +1,16 @@
+controller:
+  kind: Deployment
+  hostNetwork: false
+  hostPort:
+    enabled: false
+  admissionWebhooks:
+    enabled: false
+  publishService:
+    enabled: true
+
+  service:
+    type: LoadBalancer
+    # Optional: pick a specific IP from your MetalLB pool
+    # loadBalancerIP: 172.20.255.200
+
+# Default backend can remain the chart's default

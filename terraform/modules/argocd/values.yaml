@@ -1,0 +1,13 @@
+server:
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: false
+    ingressClassName: nginx
+    hosts:
+      - argocd.localhost
+    paths:
+      - /
+    tls: []  # Disable TLS for now
+  extraArgs:
+    - --insecure
